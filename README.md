@@ -1,89 +1,110 @@
-90-Degree Branch Line Coupler at 2.4 GHz
 
-1. Introduction
+---
 
-A 90-degree branch line coupler is designed to operate at 2.4 GHz. The coupler consists of four wave ports, enabling signal splitting and phase shifting between different ports.
+## 📡 90-Degree Branch Line Coupler - Design & Simulation
 
-2. Design Specifications
+> **Ansys HFSS Simulation of a 90-degree Branch Line Coupler Operating at 2.4 GHz**  
+> *Designed with 4 wave ports and optimized for S-parameter performance analysis.*
 
-Substrate (FR4 Epoxy)
+---
 
-Position: (-15, -20, 0) mm
+### 🔹 Introduction
+A **90-degree branch line coupler** is a **four-port** passive device used in RF and microwave circuits to split or combine signals with a phase difference of 90°. It is commonly applied in **power dividers, balanced mixers, and antenna feeding networks.**
 
-Size: (30 x 40 x 1.6) mm
+In this post, we document the **design, setup, and simulation** of a **branch line coupler** using **Ansys HFSS 2024 R2 Student Edition**.
 
-Ground Plane
+---
 
-Position: (-15, -20, 0) mm
+## 🔍 Design Specifications
+| **Parameter**     | **Value** |
+|------------------|----------|
+| **Operating Frequency** | 2.4 GHz |
+| **Number of Ports** | 4 (Wave Ports) |
+| **Substrate Material** | FR4 Epoxy |
+| **Substrate Thickness** | 1.6 mm |
+| **Patch Thickness** | 0.035 mm |
+| **Dielectric Constant (εr)** | 4.4 |
+| **Loss Tangent (tan δ)** | 0.02 |
+| **Ground Plane Thickness** | 1.6 mm |
 
-Size: (30 x 40 x 1.6) mm
+---
 
-Patch (Branch Line Structure)
+## 📐 Design & Setup
 
-Position: (-12.35, -9.8, 1.6) mm
+### **1️⃣ Substrate (FR4 Epoxy)**
+- **Position:** `(-25, -25, -0.25) mm`
+- **Size:** `(50 × 50 × 1.6) mm`
 
-Size: (24.7 x 19.7) mm
+### **2️⃣ Ground Plane**
+- **Position:** `(-25, -25, -0.25) mm`
+- **Size:** `(50 × 50 × 1.6) mm`
 
-Feed Line Ports
+### **3️⃣ Patch (Coupler Layout)**
+- **Position:** `(0, 0, 1.6) mm`
+- **Size:** `(24.7 × 19.7 × 0.035) mm`
 
-Port 1: (-10.05, -20, 1.6) mm, Size: (3 x -1.6) mm
+### **4️⃣ Wave Ports**
+| **Port** | **Position (X, Y, Z)** | **Size (mm)** |
+|---------|--------------------|--------------|
+| **Port 1** | `(10.05, -20, 1.6)` | `3 × -1.6` |
+| **Port 2** | `(10.05, 20, 1.6)` | `3 × -1.6` |
+| **Port 3** | `(-10.05, 20, 1.6)` | `3 × -1.6` |
+| **Port 4** | `(-10.05, -20, 1.6)` | `3 × -1.6` |
 
-Port 2: (10.05, -20, 1.6) mm, Size: (3 x -1.6) mm
+---
 
-Port 3: (-10.05, 20, 1.6) mm, Size: (3 x -1.6) mm
+## 🎯 Simulation Setup
 
-Port 4: (10.05, 20, 1.6) mm, Size: (3 x -1.6) mm
+### **📊 HFSS Solution Setup**
+- **Solution Frequency:** `2.4 GHz`
+- **Maximum Passes:** `6`
+- **Delta S:** `0.02`
 
-Radiation Boundary
+### **📊 Frequency Sweep Setup**
+| **Type** | **Start (GHz)** | **Stop (GHz)** | **Step (GHz)** |
+|---------|---------------|-------------|------------|
+| Linear Step | `1 GHz` | `5 GHz` | `0.01 GHz` |
 
-Position: (-25, -25, -25) mm
+---
 
-Size: (50 x 50 x 15) mm
+## 📈 Results & Analysis
 
-3. Simulation Setup
+### **1️⃣ S-Parameter Performance**
+Below is the simulated **S-parameter plot** displaying reflection and transmission characteristics:
 
-Frequency: 2.4 GHz
+![Result - S parameter](https://github.com/user-attachments/assets/5676e29b-7c2d-4cb4-846d-6fb20280ae0e)
 
-Solver: HFSS (Ansys 2024 R2)
 
-Solution Setup:
+- **S11 (Return Loss):** Indicates how much signal is reflected at input.
+- **S21, S31 (Transmission Coefficients):** Measure the power split between ports.
+- **S41 (Isolation):** Represents the isolation between non-adjacent ports.
 
-Maximum Passes: 6
+### **2️⃣ Final Design**
+The **optimized branch line coupler** is displayed below:
 
-Maximum Delta S: 0.02
 
-Sweep Setup:
+![Screenshot (493)](https://github.com/user-attachments/assets/bfd007df-2702-4507-918c-ce69a9a4167f)
 
-Type: Interpolating
+---
 
-Frequency Range: 1 - 5 GHz
+## 🚀 Conclusion
+The **90-degree branch line coupler** designed for **2.4 GHz** successfully splits signals into **two equal parts** with a **90-degree phase shift**. The **S-parameter analysis** validates the performance with acceptable return loss and transmission characteristics.
 
-Step Size: 0.01 GHz
+✅ **Key Takeaways:**
+- Designed in **Ansys HFSS** with **4 wave ports**.
+- **S-parameters** confirm efficient power division.
+- Useful in **antenna networks & RF front-end circuits**.
 
-4. Results and Analysis
+---
 
-S-Parameters (Scattering Matrix) Analysis
+## 📌 Next Steps
+🔹 **Further optimization** for better impedance matching.  
+🔹 **Fabrication & Testing** for real-world performance validation.  
+🔹 **Integration with RF front-end systems**.
 
-The S11 (Return Loss) shows good impedance matching at 2.4 GHz.
+💬 *Have any questions or suggestions? Feel free to comment below!*  
 
-The S21 and S31 (Coupling Coefficients) indicate equal power split between output ports.
+📌 **Follow for more RF & Microwave Design posts!** 🚀
 
-The S41 (Isolation) is significantly low, demonstrating proper isolation between ports.
-
-The Phase Shift between coupled ports confirms a 90-degree phase difference.
-
-Observations
-
-The branch line coupler achieves good power splitting with minimal losses.
-
-The isolation is maintained between adjacent ports.
-
-The design meets the expected performance criteria for a 90-degree branch line coupler at 2.4 GHz.
-
-5. Conclusion
-
-This 90-degree branch line coupler effectively operates at 2.4 GHz, achieving efficient power division with proper impedance matching and isolation. It is well-suited for wireless communication applications including Wi-Fi, Bluetooth, and RF front-end modules.
-
-Keywords: Branch Line Coupler, HFSS, 2.4 GHz, S-parameters, RF Circuit, Microwave Engineering
-
+---
 
